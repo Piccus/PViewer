@@ -1,14 +1,16 @@
 package com.piccus.pviewer;
 
 public class Item {
-	public int img;
-	public int star;
-	public String type;
+	public String url;
+	public String author;
+	public String tags;
+	public String score;
 	
-	public Item(int img, String type, int star){
-		this.img = img;
-		this.type = type;
-		this.star = star;
+	public Item(String url, String author, String tags, String score){
+		this.url = url;
+		this.author = author;
+		this.tags = tags;
+		this.score = score;
 	}
 
 }

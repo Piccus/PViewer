@@ -1,9 +1,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <item
+    <item android:id="@+id/search" android:title="@string/search" android:showAsAction="always" android:enabled="true"></item><item android:id="@+id/home" android:visible="true" android:showAsAction="always" android:title="@string/home" android:enabled="true"></item><item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:showAsAction="never"
         android:title="@string/action_settings"/>
+    
+    
 
 </menu>
