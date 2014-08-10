@@ -10,6 +10,11 @@ package com.piccus.pviewer;
 public final class R {
     public static final class attr {
     }
+    public static final class color {
+        public static final int id=0x7f060000;
+        public static final int rate=0x7f060002;
+        public static final int score=0x7f060001;
+    }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
 
@@ -25,48 +30,104 @@ public final class R {
         public static final int load=0x7f020001;
     }
     public static final class id {
-        public static final int LinearLayout=0x7f080000;
-        public static final int action_settings=0x7f080012;
-        public static final int front=0x7f080001;
-        public static final int home=0x7f080011;
-        public static final int img=0x7f080009;
-        public static final int index=0x7f080003;
-        public static final int list=0x7f080004;
-        public static final int next=0x7f080002;
-        public static final int no=0x7f080008;
-        public static final int score=0x7f08000c;
-        public static final int scoreView=0x7f08000d;
-        public static final int search=0x7f080010;
-        public static final int tags=0x7f08000e;
-        public static final int tagsShow=0x7f080005;
-        public static final int tagsSource=0x7f080006;
-        public static final int tagsView=0x7f08000f;
-        public static final int up=0x7f08000a;
-        public static final int upView=0x7f08000b;
-        public static final int yes=0x7f080007;
+        public static final int ID=0x7f090028;
+        public static final int IDView=0x7f090027;
+        public static final int LinearLayout=0x7f090021;
+        public static final int LinearLayout1=0x7f090000;
+        public static final int action_settings=0x7f09002f;
+        public static final int author=0x7f090007;
+        public static final int authorView=0x7f090008;
+        public static final int file=0x7f09001e;
+        public static final int fileSize=0x7f09001c;
+        public static final int fileSizeView=0x7f09001d;
+        public static final int fileView=0x7f09001f;
+        public static final int front=0x7f090025;
+        public static final int getFile=0x7f090020;
+        public static final int getJpeg=0x7f09001b;
+        public static final int getSample=0x7f090016;
+        public static final int github=0x7f090003;
+        public static final int grade=0x7f09000d;
+        public static final int gradeView=0x7f09000e;
+        public static final int home=0x7f090031;
+        public static final int id=0x7f090009;
+        public static final int idView=0x7f09000a;
+        public static final int imagePreview=0x7f090011;
+        public static final int img=0x7f090026;
+        public static final int index=0x7f090023;
+        public static final int jpeg=0x7f090019;
+        public static final int jpegSize=0x7f090017;
+        public static final int jpegSizeView=0x7f090018;
+        public static final int jpegView=0x7f09001a;
+        public static final int list=0x7f090022;
+        public static final int next=0x7f090024;
+        public static final int note=0x7f090004;
+        public static final int note2=0x7f090005;
+        public static final int note3=0x7f090006;
+        public static final int piccus=0x7f090001;
+        public static final int rate=0x7f09002a;
+        public static final int rateView=0x7f090029;
+        public static final int rating=0x7f09000b;
+        public static final int ratingView=0x7f09000c;
+        public static final int sample=0x7f090014;
+        public static final int sampleSize=0x7f090012;
+        public static final int sampleSizeView=0x7f090013;
+        public static final int sampleView=0x7f090015;
+        public static final int score=0x7f09002c;
+        public static final int scoreView=0x7f09002b;
+        public static final int search=0x7f090030;
+        public static final int tagsdetail=0x7f09000f;
+        public static final int tagshowdetail=0x7f090010;
+        public static final int up=0x7f09002d;
+        public static final int upView=0x7f09002e;
+        public static final int version=0x7f090002;
     }
     public static final class layout {
-        public static final int activity_main=0x7f030000;
-        public static final int dialog=0x7f030001;
-        public static final int ilayout=0x7f030002;
+        public static final int activity_about=0x7f030000;
+        public static final int activity_data=0x7f030001;
+        public static final int activity_main=0x7f030002;
+        public static final int footer=0x7f030003;
+        public static final int ilayout=0x7f030004;
     }
     public static final class menu {
-        public static final int main=0x7f070000;
+        public static final int about=0x7f080000;
+        public static final int data=0x7f080001;
+        public static final int main=0x7f080002;
     }
     public static final class string {
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;
-        public static final int front=0x7f050006;
-        public static final int home=0x7f05000c;
-        public static final int index=0x7f050007;
-        public static final int next=0x7f050005;
-        public static final int no=0x7f05000b;
-        public static final int score=0x7f050004;
-        public static final int search=0x7f050008;
-        public static final int tags=0x7f050002;
-        public static final int tagshow=0x7f050009;
-        public static final int up=0x7f050003;
-        public static final int yes=0x7f05000a;
+        public static final int download=0x7f05000f;
+        public static final int file=0x7f050018;
+        public static final int fileSize=0x7f050017;
+        public static final int foot=0x7f050010;
+        public static final int front=0x7f050005;
+        public static final int get=0x7f050019;
+        public static final int github=0x7f05001e;
+        public static final int head=0x7f050011;
+        public static final int hello_world=0x7f05001b;
+        public static final int home=0x7f05000b;
+        public static final int id=0x7f05000d;
+        public static final int index=0x7f050006;
+        public static final int jpeg=0x7f050016;
+        public static final int jpegSize=0x7f050015;
+        public static final int next=0x7f050004;
+        public static final int no=0x7f05000a;
+        public static final int note=0x7f05001f;
+        public static final int note2=0x7f050020;
+        public static final int note3=0x7f050021;
+        public static final int piccus=0x7f05001c;
+        public static final int rate=0x7f050012;
+        public static final int sample=0x7f050014;
+        public static final int sampleSize=0x7f050013;
+        public static final int score=0x7f050003;
+        public static final int search=0x7f050007;
+        public static final int size=0x7f05000e;
+        public static final int tagshow=0x7f050008;
+        public static final int title_activity_about=0x7f05001a;
+        public static final int title_activity_data=0x7f05000c;
+        public static final int up=0x7f050002;
+        public static final int version=0x7f05001d;
+        public static final int yes=0x7f050009;
     }
     public static final class style {
         /** 
@@ -90,10 +151,10 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f060000;
+        public static final int AppBaseTheme=0x7f070000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f060001;
+        public static final int AppTheme=0x7f070001;
     }
 }

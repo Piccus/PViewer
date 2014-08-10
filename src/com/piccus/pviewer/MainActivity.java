@@ -34,12 +34,14 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -51,7 +53,7 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	
-	private static final String BASE_URL = "https://yande.re/post.json?limit=6" ;
+	private static final String BASE_URL = "https://yande.re/post.json?limit=10" ;
 	private static final String PLUS_URL = "&page=";
 	private static final String TAGS_URL = "&tags=";
 	private static final int MSG_SUCCESS = 0;
@@ -59,7 +61,7 @@ public class MainActivity extends Activity {
 	
 	boolean TAGS_ON_OFF = false;
 	String tags = "";
-	
+	String jsonfile = "";
 	int page = 1;
 	List<Item> items;
 	ListView listView = null;
@@ -70,6 +72,9 @@ public class MainActivity extends Activity {
 	Button index = null;
 	MenuItem search = null;
 	MenuItem home = null;
+	Item itemPass = null;
+	View footerView = null;
+	MenuItem about = null;
 	
 	
 	private Handler mHandler = null;
@@ -82,9 +87,15 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		
 		listView = (ListView) findViewById(R.id.list);
-		next = (Button) findViewById(R.id.next);
-		front = (Button) findViewById(R.id.front);
-		index = (Button) findViewById(R.id.index);
+		
+		
+		footerView = getLayoutInflater().inflate(R.layout.footer, null);
+		listView.addFooterView(footerView);
+		
+		
+		next = (Button) footerView.findViewById(R.id.next);
+		front = (Button) footerView.findViewById(R.id.front);
+		index = (Button) footerView.findViewById(R.id.index);
 		
 		File cacheDir = StorageUtils.getOwnCacheDirectory(getApplicationContext(), "PViewer/cache"); 
 		
@@ -116,7 +127,7 @@ public class MainActivity extends Activity {
 	                break;
 	 
 	            case MSG_FAILURE:
-	            	Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_SHORT)
+	            	Toast.makeText(getApplicationContext(), "ÍøÂçÁ¬½Ó´íÎó£¡", Toast.LENGTH_SHORT)
 	            	.show();
 	                break;
 	            }
@@ -166,6 +177,48 @@ public class MainActivity extends Activity {
 				}
 			}
 			
+		}); 
+		
+		listView.setOnItemClickListener(new ListView.OnItemClickListener(){
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
+					long arg3) {
+				try {
+					JSONArray jsonarray = new JSONArray(jsonfile);
+					JSONObject json = new JSONObject(jsonarray.getString(position));
+					itemPass = new Item(json.getString("preview_url"), json.getString("author"),
+							json.getString("score"), json.getString("tags"), json.getString("id"),
+							json.getString("rating"),json.getString("sample_url"), json.getString("jpeg_url"),
+							json.getString("file_url"),json.getString("sample_width"), json.getString("sample_height"),
+							json.getString("jpeg_width"), json.getString("jpeg_height"), json.getString("width"),
+							json.getString("height"), json.getString("sample_file_size"), json.getString("jpeg_file_size"),
+							json.getString("file_size"));
+					Intent intent = new Intent(MainActivity.this, DataActivity.class);
+					
+					intent.putExtra("url", itemPass.url);
+					intent.putExtra("author", itemPass.author);
+					intent.putExtra("score", itemPass.score);
+					intent.putExtra("tags", itemPass.tags);
+					intent.putExtra("id", itemPass.id);
+					intent.putExtra("rate", itemPass.rate);
+					intent.putExtra("sample_url", itemPass.sample_url);
+					intent.putExtra("jpeg_url", itemPass.jpeg_url);
+					intent.putExtra("file_url", itemPass.file_url);
+					intent.putExtra("sample_size", itemPass.sample_size);
+					intent.putExtra("jpeg_size", itemPass.jpeg_size);
+					intent.putExtra("file_size", itemPass.file_size);
+					intent.putExtra("sample", itemPass.sample);
+					intent.putExtra("jpeg", itemPass.jpeg);
+					intent.putExtra("file", itemPass.file);
+					startActivity(intent);
+					
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
 		});
 		
 	}
@@ -183,16 +236,12 @@ public class MainActivity extends Activity {
 		try {
 			JSONArray jsonarray = new JSONArray(js);
 			JSONObject json = null;
-			if(js.length() == 0){
-				items.add(new Item("https://yuno.yande.re/data/preview/5f/91/5f91a179e8018a6dd52bc9df108bfb95.jpg", "error", "error", "ËÑË÷½á¹ûÎª¿ÕÅ¶"));
-			}else{
-				for(int i = 0;i < jsonarray.length(); i++){
-					json = new JSONObject(jsonarray.getString(i));
-					items.add(new Item(json.getString("preview_url"), json.getString("author"), json.getString("tags"), json.getString("score")));
-				}
+			for(int i = 0;i < jsonarray.length(); i++){
+				json = new JSONObject(jsonarray.getString(i));
+				items.add(new Item(json.getString("preview_url"), json.getString("author"), json.getString("id"),
+						json.getString("score"), json.getString("rating")));
 			}
-			
-		} catch (JSONException e) {
+		}catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -204,6 +253,19 @@ public class MainActivity extends Activity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		home = (MenuItem) menu.findItem(R.id.home);
 		search = (MenuItem) menu.findItem(R.id.search);
+		about = (MenuItem) menu.findItem(R.id.action_settings);
+		
+		about.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+			
+			@Override
+			public boolean onMenuItemClick(MenuItem arg0) {
+				
+				Intent intent = new Intent(MainActivity.this, About.class);
+				startActivity(intent);
+				
+				return true;
+			}
+		});
 		
 		home.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
 			
@@ -266,7 +328,7 @@ public class MainActivity extends Activity {
 			            while ((line = reader.readLine()) != null) {
 			                sb.append(line);			                
 			            }
-			        
+			        jsonfile = sb.toString();
 			        }
 		        }catch(Exception e){
 		        	mHandler.obtainMessage(MSG_FAILURE).sendToTarget();
@@ -309,8 +371,9 @@ public class MainActivity extends Activity {
 
 		public class ViewHolder{  
 	        TextView author;  
-	        TextView tags;  
+	        TextView id;  
 	        TextView score;
+	        TextView rate;
 	        ImageView img;  
 	    }  
 		
@@ -325,15 +388,17 @@ public class MainActivity extends Activity {
 				viewHolder.img = (ImageView)convertView.findViewById(R.id.img);
 				viewHolder.author = (TextView)convertView.findViewById(R.id.upView);
 				viewHolder.score = (TextView)convertView.findViewById(R.id.scoreView);
-				viewHolder.tags = (TextView)convertView.findViewById(R.id.tagsView);
+				viewHolder.rate = (TextView)convertView.findViewById(R.id.rateView);
+				viewHolder.id = (TextView)convertView.findViewById(R.id.IDView);
 				convertView.setTag(viewHolder);  
 			}else{
 				viewHolder = (ViewHolder)convertView.getTag();
 			}
 			
 			viewHolder.author.setText(item.author);
-			viewHolder.tags.setText(item.tags);
+			viewHolder.rate.setText(item.rate);
 			viewHolder.score.setText(item.score);
+			viewHolder.id.setText(item.id);
 			imageLoader.displayImage(item.url, viewHolder.img);
 			return convertView;
 			

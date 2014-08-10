@@ -1,74 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="20dp"
     android:orientation="vertical" >
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="85dp" >
+        android:layout_height="wrap_content" >
 
         <ImageView
             android:id="@+id/img"
-            android:layout_width="80dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:scaleType="centerCrop" />
+            android:scaleType="centerInside" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="vertical" >
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="25dp" >
+                android:layout_height="wrap_content" >
 
                 <TextView
-                    android:id="@+id/up"
+                    android:id="@+id/IDView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/up"                   
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/id" />
 
                 <TextView
-                    android:id="@+id/upView"
-                    android:layout_width="140dp"
-                    android:layout_height="wrap_content"         
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                <TextView
-                    android:id="@+id/score"
+                    android:id="@+id/ID"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/score"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:layout_alignParentTop="true"
+                    android:layout_toLeftOf="@+id/IDView"
+                    android:text="@string/id"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/id" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/rateView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/rate" />
+
+                <TextView
+                    android:id="@+id/rate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_toLeftOf="@+id/rateView"
+                    android:text="@string/rate"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/rate" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
 
                 <TextView
                     android:id="@+id/scoreView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/score" />
 
                 <TextView
-                    android:id="@+id/tags"
+                    android:id="@+id/score"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/tags" />
+                    android:layout_alignParentTop="true"
+                    android:layout_toLeftOf="@+id/scoreView"
+                    android:text="@string/score"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/score" />
 
-                <TextView
-                    android:id="@+id/tagsView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-            </LinearLayout>
-
+            </RelativeLayout>
         </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/up"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/upView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+     
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
     </LinearLayout>
 
